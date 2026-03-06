@@ -1,149 +1,42 @@
-/* Component-scoped styles for energy policy site */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(13, 24, 22, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
-}
-
-.site-header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: var(--space);
-  padding-bottom: var(--space);
-}
-
-.site-title {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin: 0;
-  color: var(--text);
-}
-
-.site-title a {
-  color: inherit;
-}
-.site-title a:hover {
-  color: var(--accent);
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.75rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-.nav-links a:hover {
-  color: var(--text);
-}
-
-.hero {
-  padding-top: calc(var(--space) * 4);
-  padding-bottom: calc(var(--space) * 4);
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
-  border-bottom: 1px solid var(--border);
 }
 
-.hero-tag {
-  display: inline-block;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  margin-bottom: var(--space);
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.hero p {
-  max-width: 38em;
-  margin: 1.25rem auto 0;
-  font-size: 1.2rem;
-  color: var(--text-muted);
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.research-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space);
-  margin-top: calc(var(--space) * 2);
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-.research-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+.card {
+  padding: 2em;
 }
 
-.research-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent-subtle);
-}
-
-.research-card h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.125rem;
-}
-
-.research-card p {
-  margin: 0;
-  font-size: 0.9375rem;
-  color: var(--text-muted);
-}
-
-.resources-list {
-  list-style: none;
-  margin: calc(var(--space) * 2) 0 0;
-  padding: 0;
-}
-
-.resources-list li {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.resources-list li:last-child {
-  border-bottom: none;
-}
-
-.resources-list a {
-  font-weight: 600;
-}
-
-.resources-list .meta {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-}
-
-.site-footer {
-  margin-top: calc(var(--space) * 4);
-  padding-top: calc(var(--space) * 2);
-  padding-bottom: calc(var(--space) * 2);
-  border-top: 1px solid var(--border);
-  text-align: center;
-  font-size: 0.875rem;
-  color: var(--text-muted);
-}
-
-.site-footer a {
-  color: var(--text-muted);
-}
-.site-footer a:hover {
-  color: var(--accent);
+.read-the-docs {
+  color: #888;
 }
