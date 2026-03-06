@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# Energy Policy Research
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A static React + TypeScript website for energy policy research content. Built with Vite.
 
-Currently, two official plugins are available:
+## High-Level Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Stack:** React 19, TypeScript, Vite 7. Single-page static site; no router, no backend.
+- **Data flow:** Content is defined in `App.tsx` (e.g. `RESEARCH_AREAS`, `RESOURCES`). Global styles and design tokens live in `index.css`; component layout/visuals in `App.css`.
+- **Build:** `npm run build` produces static assets in `dist/` suitable for any static host (GitHub Pages, Netlify, S3 + CloudFront, etc.).
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Path | Purpose |
+|------|---------|
+| `index.html` | Entry HTML; mounts `#root`, loads `src/main.tsx`. |
+| `src/main.tsx` | React root; renders `<App />` with `index.css` applied. |
+| `src/App.tsx` | Single-page layout: header, hero, research areas, resources list, about, footer. |
+| `src/App.css` | Component-level styles (header, hero, cards, resources, footer). |
+| `src/index.css` | Global reset, CSS variables (colors, fonts, spacing), base typography. |
 
-## Expanding the ESLint configuration
+No separate “system” or config assets; all content and structure are in the app component and styles.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Running the Site
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev    # dev server with HMR
+npm run build  # production build to dist/
+npm run preview  # serve dist/ locally
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Current State & Known Issues
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Implemented:**
+- Sticky header with in-page nav (Research, Resources, About).
+- Hero section with tagline and short description.
+- Research areas grid (four placeholder cards).
+- Publications/Resources list (placeholder items; links are `#`).
+- About section and footer.
+- Dark theme with Fraunces + Source Sans 3, teal accent, responsive layout.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Immediate next steps:**
+- Replace placeholder research and resource entries with real content.
+- Point resource links to actual URLs or PDFs.
+- Optionally add a custom favicon and meta description for SEO.
